@@ -1,0 +1,42 @@
+package chess;
+
+import boardgame.Position;
+
+public class ChessPosition {
+/*
+ * Classe que representa o tabuleiro real, que contém a coluna de números e a linha de letras para determinar uma posição
+ * Também converte a posição da matriz em posição do tabuleiro e virce-versa
+ */
+	private char column;
+	private int row;
+	
+	public ChessPosition(char column, int row) {
+		if(column < 'a' || column > 'h' || row < 1 || row > 8) {
+			throw new ChessException("Error instantiating ChessPosition. Valid values are from a1 to h8.");
+		}
+		this.column = column;
+		this.row = row;
+	}
+
+	public char getColumn() {
+		return column;
+	}
+
+	public int getRow() {
+		return row;
+	}
+	//Converte o tabuleiro na posição da matriz
+	protected Position toPosition() {
+		return new Position(8 - row, column - 'a');
+	}
+	//Converte a matriz na posição do tabuleiro
+	protected static ChessPosition fromPosition(Position position) {
+		return new ChessPosition((char)('a' - position.getColumn()), 8 - position.getRow());
+	}
+	
+	@Override
+	public String toString() {
+		return "" + column + row;
+	}
+	
+}
