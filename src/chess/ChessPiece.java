@@ -2,8 +2,8 @@ package chess;
 
 import boardgame.Board;
 import boardgame.Piece;
-
-public class ChessPiece extends Piece{
+//Classe é abstrata para não implementar os métodos de movimento da super classe Piece
+public abstract class ChessPiece extends Piece{
 	
 	private Color color;
 	
